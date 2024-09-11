@@ -1,13 +1,13 @@
 [![INFORMS Journal on Computing Logo](https://INFORMSJoC.github.io/logos/INFORMS_Journal_on_Computing_Header.jpg)](https://pubsonline.informs.org/journal/ijoc)
 
-# CacheTest
+# Two-stage estimation and variance modeling for latency-constrained variational quantum algorithms
 
 This archive is distributed in association with the [INFORMS Journal on
 Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
 The software and data in this repository are a snapshot of the software and data
 that were used in the research reported on in the paper 
-[Two-stage estimation and variance modeling for latency-constrained variational quantum algorithms](https://doi.org/10.1287/ijoc.2024.0575) by Yunsoo Ha, Sara Shashaani, and Matt Menickelly. 
+[Two-Stage Estimation and Variance Modeling for Latency-Constrained Variational Quantum Algorithms](https://doi.org/10.1287/ijoc.2024.0575) by Yunsoo Ha, Sara Shashaani, and Matt Menickelly. 
 
 ## Cite
 
