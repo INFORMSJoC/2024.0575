@@ -21,13 +21,13 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ```
 @misc{CacheTest,
-  author =        {T. Ralphs},
+  author =        {Ha, Yunsoo and Shashaani, Sara and Menickelly, Matt},
   publisher =     {INFORMS Journal on Computing},
-  title =         {{CacheTest}},
-  year =          {2020},
-  doi =           {10.1287/ijoc.2019.0000.cd},
-  url =           {https://github.com/INFORMSJoC/2019.0000},
-  note =          {Available for download at https://github.com/INFORMSJoC/2019.0000},
+  title =         {{Two-Stage Estimation and Variance Modeling for Latency-Constrained Variational Quantum Algorithms}},
+  year =          {2024},
+  doi =           {10.1287/ijoc.2024.0575.cd},
+  url =           {https://github.com/INFORMSJoC/2024.0575},
+  note =          {Available for download at https://github.com/INFORMSJoC/2024.0575},
 }  
 ```
 
