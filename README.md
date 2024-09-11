@@ -13,9 +13,9 @@ that were used in the research reported on in the paper
 
 To cite the contents of this repository, please cite both the paper and this repo, using their respective DOIs.
 
-https://doi.org/10.1287/ijoc.2019.0000
+https://doi.org/10.1287/ijoc.2024.0575
 
-https://doi.org/10.1287/ijoc.2019.0000.cd
+https://doi.org/10.1287/ijoc.2024.0575.cd
 
 Below is the BibTex for citing this snapshot of the repository.
 
