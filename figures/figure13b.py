@@ -1,0 +1,70 @@
+import sys
+import os.path as o
+import numpy as np
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings("ignore")
+
+sys.path.append(o.abspath(o.join(o.dirname(sys.modules[__name__].__file__), "..")))
+
+def plot_with_conf_interval(file1, file2, ylabel, output):
+    conf_level = 0.95
+
+    # Load data from the first file
+    data1 = np.load(file1)
+    mean1 = np.mean(data1, axis=0)
+    std1 = np.std(data1, axis=0)
+    conf_interval1 = []
+
+    # Calculate confidence interval for the first file
+    for i in range(len(mean1)):
+        critical_value1 = stats.t.ppf((1 + conf_level) / 2, len(data1[:,0]) - 1)
+        margin_of_error1 = critical_value1 * (std1[i] / np.sqrt(len(data1[:,0])))
+        conf_interval1.append((mean1[i] - margin_of_error1, mean1[i] + margin_of_error1))
+
+    # Load data from the second file
+    data2 = np.load(file2)
+    mean2 = np.mean(data2, axis=0)
+    std2 = np.std(data2, axis=0)
+    conf_interval2 = []
+
+    # Calculate confidence interval for the second file
+    for i in range(len(mean2)):
+        critical_value2 = stats.t.ppf((1 + conf_level) / 2, len(data2[:,0]) - 1)
+        margin_of_error2 = critical_value2 * (std2[i] / np.sqrt(len(data2[:,0])))
+        conf_interval2.append((mean2[i] - margin_of_error2, mean2[i] + margin_of_error2))
+
+    # Generate the plot
+    x = range(len(conf_interval1))
+    y_lower1 = [d[0] for d in conf_interval1]
+    y_upper1 = [d[1] for d in conf_interval1]
+
+    y_lower2 = [d[0] for d in conf_interval2]
+    y_upper2 = [d[1] for d in conf_interval2]
+
+    plt.figure(figsize=(7, 4.8))
+    plt.rc('font', size=14)  # Change the font size for labels and legends
+    plt.rc('xtick', labelsize=12)  # Change the font size for x-axis tick labels
+    plt.rc('ytick', labelsize=12)
+    plt.xlabel('X-axis Label', fontsize=18)  # Adjust the font size as needed
+    plt.ylabel('Y-axis Label', fontsize=18)  # Adjust the font size as needed
+
+    plt.plot(x, mean1, color='C0', linewidth = 2, label='VMI-2STRO-DF-3')
+    plt.plot(x, y_lower1, color='C0', linestyle='--', linewidth = 1)
+    plt.plot(x, y_upper1, color='C0', linestyle='--', linewidth = 1)
+    plt.fill_between(x, y_lower1, y_upper1, alpha=0.2, color='C0')
+
+    plt.plot(x, mean2, color='C1', linewidth = 2, label='ASTRO-DF')
+    plt.plot(x, y_lower2, color='C1', linestyle='--', linewidth = 1)
+    plt.plot(x, y_upper2, color='C1', linestyle='--', linewidth = 1)
+    plt.fill_between(x, y_lower2, y_upper2, alpha=0.2, color='C1')
+
+    plt.xlabel('Iteration k')
+    plt.ylabel(ylabel)
+    plt.legend(loc="upper left")
+    plt.savefig(output, format='pdf')
+    plt.clf()  # Clear the figure for the next iteration
+
+# Plot RSBR
+plot_with_conf_interval('figures/function_maxcut_vmi.npy', 'figures/function_maxcut_astro.npy', 'Function Estimates', f"experiments/plots/figure13b.pdf")
