@@ -34,26 +34,14 @@ Below is the BibTex for citing this snapshot of the repository.
 ## Description
 
 This repository aims to demonstrate the effect of variance model informed two stage stochastic trust region methods (VMI-2STRO-DF) in quantum approximate optimization algorithm (QAOA). 
+
 ## Building
 
-In Linux, to build the version that multiplies all elements of a vector by a
-constant (used to obtain the results in [Figure 1](results/mult-test.png) in the
-paper), stepping K elements at a time, execute the following commands.
+You need to install the packages listed in requirements.txt.
 
 ```
-make mult
+pip install -r requirements.txt
 ```
-
-Alternatively, to build the version that sums the elements of a vector (used
-to obtain the results [Figure 2](results/sum-test.png) in the paper), stepping K
-elements at a time, do the following.
-
-```
-make clean
-make sum
-```
-
-Be sure to make clean before building a different version of the code.
 
 ## Results
 
