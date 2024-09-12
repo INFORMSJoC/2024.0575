@@ -58,8 +58,7 @@ Be sure to make clean before building a different version of the code.
 
 ## Results
 
-Figure 1 in the paper shows the results of the multiplication test with different
-values of K using `gcc` 7.5 on an Ubuntu Linux box.
+All detailed results are available in the experiments\plots folder.
 
 ![Figure 1](results/mult-test.png)
 
