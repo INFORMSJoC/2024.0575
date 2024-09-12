@@ -62,7 +62,7 @@ All detailed results are available in [plots](experiments/plots) folder.
 
 ## Replicating
 
-To replicate the results presented in the paper, run the code located in the [figures](figures) folder. This will generate the corresponding plots found in the [plots](experiments/plots) folder using the output .pickle files from the [outputs](experiments/outputs) folder. For example, to create Figure 12a, execute the script
+To replicate the results presented in the paper, run the code located in the [figures](figures) folder. This will generate the corresponding plots found in the [plots](experiments/plots) folder using the output .pickle files from the [outputs](experiments/outputs) folder. For instance, to generate Figure 12a, execute the script
 ```
 python figures/figure12a.py
 ```
