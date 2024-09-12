@@ -64,12 +64,6 @@ All detailed results are available in [plots](experiments/plots) folder.
 
 To replicate the results in the paper, run the code in [figures](figures) folder. 
 
-
-## Ongoing Development
-
-This code is being developed on an on-going basis at the author's
-[Github site](https://github.com/tkralphs/JoCTemplate).
-
 ## Support
 
 For support in using this software, submit an
