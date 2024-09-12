@@ -72,4 +72,3 @@ To replicate these .pickle files, execute the code in the [run](run) folder. For
 ```
 python run/maxcut_run.py
 ```
-
