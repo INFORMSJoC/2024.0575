@@ -62,24 +62,8 @@ All detailed results are available in [plots](experiments/plots) folder.
 
 ## Replicating
 
-To replicate the results in [Figure 1](results/mult-test), do either
+To replicate the results in the paper, run the code in [figures](figures) folder. 
 
-```
-make mult-test
-```
-or
-```
-python test.py mult
-```
-To replicate the results in [Figure 2](results/sum-test), do either
-
-```
-make sum-test
-```
-or
-```
-python test.py sum
-```
 
 ## Ongoing Development
 
