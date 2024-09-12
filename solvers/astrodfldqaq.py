@@ -7,8 +7,6 @@ import warnings
 from scipy.optimize import NonlinearConstraint
 from scipy.optimize import minimize
 warnings.filterwarnings("ignore")
-import pandas as pd
-from openpyxl import load_workbook
 
 from base import Solver
 
