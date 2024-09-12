@@ -64,8 +64,3 @@ All detailed results are available in [plots](experiments/plots) folder.
 
 To replicate the results presented in the paper, run the code located in the [figures](figures) folder. This will generate the corresponding plots found in the [plots](experiments/plots) folder using the output .pickle files from the [outputs](experiments/outputs) folder. To replicate these .pickle files, execute the code in the [run](run) folder.
 
-
-## Support
-
-For support in using this software, submit an
-[issue](https://github.com/tkralphs/JoCTemplate/issues/new).
