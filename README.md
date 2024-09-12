@@ -20,7 +20,7 @@ https://doi.org/10.1287/ijoc.2024.0575.cd
 Below is the BibTex for citing this snapshot of the repository.
 
 ```
-@misc{CacheTest,
+@misc{Ha2024,
   author =        {Ha, Yunsoo and Shashaani, Sara and Menickelly, Matt},
   publisher =     {INFORMS Journal on Computing},
   title =         {{Two-Stage Estimation and Variance Modeling for Latency-Constrained Variational Quantum Algorithms}},
