@@ -62,7 +62,7 @@ All detailed results are available in [plots](experiments/plots) folder.
 
 ## Replicating
 
-To replicate the results in the paper, run the code in [figures](figures) folder. The codes in [figures](figures) folder generate the results in [plots](experiments/plots) folder by using the output (.npy) files in [outputs](experiments/outputs) folders. To generate the output (.npy) files, run the code in [run](run) folder.
+To replicate the results in the paper, run the code in [figures](figures) folder. The codes in [figures](figures) folder generate the results in [plots](experiments/plots) folder by using the output (.pickle) files in [outputs](experiments/outputs) folders. To generate the output (.pickle) files, run the code in [run](run) folder.
 
 ## Support
 
