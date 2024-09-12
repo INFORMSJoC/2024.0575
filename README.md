@@ -33,7 +33,7 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ## Description
 
-The goal of this software is to demonstrate the effect of cache optimization.
+This repository aims to demonstrate the effect of variance model informed two stage stochastic trust region methods in quantum approximate optimization algorithm.
 
 ## Building
 
