@@ -58,14 +58,7 @@ Be sure to make clean before building a different version of the code.
 
 ## Results
 
-All detailed results are available in the experiments\plots folder.
-
-![Figure 1](results/mult-test.png)
-
-Figure 2 in the paper shows the results of the sum test with different
-values of K using `gcc` 7.5 on an Ubuntu Linux box.
-
-![Figure 1](results/sum-test.png)
+All detailed results are available in [plots](experiments/plots) folder.
 
 ## Replicating
 
