@@ -489,7 +489,7 @@ class ProblemSolver(object):
         self.function_start = time.time()
 
         print("Starting macroreplications in parallel")
-        with Pool(processes=10) as process_pool:
+        with Pool() as process_pool:
             # Start the macroreplications in parallel (async)
             result = process_pool.map_async(self.run_multithread, range(n_macroreps))
             # Wait for the results to be returned (or 1 second)
@@ -575,7 +575,7 @@ class ProblemSolver(object):
         self.function_start = time.time()
 
         print("Starting postreplications in parallel")
-        with Pool(processes=10) as process_pool:
+        with Pool() as process_pool:
             # Start the macroreplications in parallel (async)
             result = process_pool.map_async(self.post_replicate_multithread, range(self.n_macroreps))
             # Wait for the results to be returned (or 1 second)
