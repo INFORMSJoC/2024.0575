@@ -65,7 +65,7 @@ def main():
             solver_name = solver
 
             if solver == "VMI3-0-cv10":
-                solver_name = "VMIASTRODF"
+                solver_name = "ASTRODF"
                 solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 3, "cv": 10}
             elif solver == "NELDMDQ-0":
                 solver_name = "NELDMDQ"
@@ -74,11 +74,11 @@ def main():
                 solver_name = "SPSAQ"
                 solver_fixed_factors = {"overhead_burden": 0}
             elif solver == "ASTRODF-0":
-                solver_name = "VMIASTRODF"
+                solver_name = "ASTRODF"
                 solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 0}
             
             if solver == "VMI3-1000-cv10":
-                solver_name = "VMIASTRODF"
+                solver_name = "ASTRODF"
                 solver_fixed_factors = {"overhead_burden": 1000, "sampling_version": 3, "cv": 10}
             elif solver == "NELDMDQ-1000":
                 solver_name = "NELDMDQ"
@@ -87,7 +87,7 @@ def main():
                 solver_name = "SPSAQ"
                 solver_fixed_factors = {"overhead_burden": 1000}
             elif solver == "ASTRODF-1000":
-                solver_name = "VMIASTRODF"
+                solver_name = "ASTRODF"
                 solver_fixed_factors = {"overhead_burden": 1000, "sampling_version": 0}
 
             # Temporarily store experiments on the same problem for post-normalization.
