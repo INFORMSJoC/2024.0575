@@ -33,7 +33,7 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ## Description
 
-This repository aims to demonstrate the effect of variance model informed two stage stochastic trust region methods (VMI-2STRO-DF) in quantum approximate optimization algorithm (QAOA). 
+This repository aims to demonstrate the effect of variance model informed two stage stochastic trust region methods (ASTRO-DF-VMs) in quantum approximate optimization algorithm (QAOA). 
 
 ## Building
 
