@@ -35,6 +35,11 @@ Below is the BibTex for citing this snapshot of the repository.
 
 This repository aims to demonstrate the effect of variance model informed two stage stochastic trust region methods (VMI-2STRO-DF) in quantum approximate optimization algorithm (QAOA). 
 
+
+## Acknowledgement
+
+This software framework is built upon the foundation provided by [SimOpt](https://github.com/simopt-admin/simopt). We acknowledge the contributions of D.J. Eckman, S.G. Henderson, S. Shashaani, and R. Pasupathy for their work on SimOpt, which has greatly facilitated the development of this project.
+
 ## Building
 
 You need to install the packages listed in requirements.txt.
