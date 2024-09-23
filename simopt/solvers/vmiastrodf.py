@@ -316,10 +316,6 @@ class VMIASTRODF(Solver):
                     if isnan(x_minvar[0]):
                         ind_success = 0
 
-                # If the distance between the minimizer from variance model and reused point is too close, we will use the reusable point
-                #if norm(np.array(visited_pts_list[f_index].x) - np.array(x_minvar)) < delta_k / 5:
-                #    ind_success = 0
-
             # If it is the first iteration or there is no design point we can reuse within the trust region, use the coordinate basis
             if (k == 1) or (norm(np.array(x_k) - np.array(visited_pts_list[f_index].x))==0) or reuse_points == False:
                 # Construct the interpolation set
@@ -352,7 +348,6 @@ class VMIASTRODF(Solver):
 
                     if min(Y_dist) > delta_k/5:
                         v_index = Y_dist.index(min(Y_dist))
-                    #if v_index != 1:
                         Y[v_index][0] = np.array(x_minvar)
 
                         # transform the center point to origin
