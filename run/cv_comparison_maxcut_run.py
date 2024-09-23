@@ -54,11 +54,11 @@ def main():
             solver_name = solver
 
             if solver == "VMI3-0-cv10":
-                solver_name = "ASTRODF"
+                solver_name = "VMIASTRODF"
                 solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 3, "cv": 10}
 
             if solver == "VMI3-0-cv100":
-                solver_name = "ASTRODF"
+                solver_name = "VMIASTRODF"
                 solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 3, "cv": 100}
 
             # Temporarily store experiments on the same problem for post-normalization.

@@ -54,10 +54,10 @@ def main():
             solver_name = solver
 
             if solver == "ASTRODFPF-1":
-                solver_name = "ASTRODF"
+                solver_name = "VMIASTRODF"
                 solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 0, "reguralized_objective": True, "penalty_function_constant": 1}
             elif solver == "ASTRODFPF-10":
-                solver_name = "ASTRODF"
+                solver_name = "VMIASTRODF"
                 solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 0, "reguralized_objective": True, "penalty_function_constant": 10}
 
             # Temporarily store experiments on the same problem for post-normalization.

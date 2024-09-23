@@ -9,7 +9,7 @@ from __future__ import annotations
 # import solvers
 from simopt.solvers.astrodfonemodel import ASTRODF1M
 from simopt.solvers.astrodftwomodel import ASTRODF2M
-from simopt.solvers.astrodf import ASTRODF
+from simopt.solvers.vmiastrodf import VMIASTRODF
 from simopt.solvers.neldmdq import NelderMeadQ
 from simopt.solvers.spsaq import SPSAQ
 
@@ -22,7 +22,7 @@ from simopt.base import Model, Problem, Solver
 
 # directory dictionaries
 solver_directory: dict[str, "Solver"] = {
-    "ASTRODF": ASTRODF,
+    "ASTRODF": VMIASTRODF,
     "ASTRODF1M": ASTRODF1M,
     "ASTRODF2M": ASTRODF2M,
     "NELDMDQ": NelderMeadQ,

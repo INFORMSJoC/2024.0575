@@ -13,7 +13,7 @@ warnings.filterwarnings("ignore")
 from simopt.base import Solver, Problem, Solution
 
 
-class ASTRODF(Solver):
+class VMIASTRODF(Solver):
     """Three version of ASTRO-DF-VMs with varying sampling version and ASTRO-DF.
 
     Attributes
@@ -48,7 +48,7 @@ class ASTRODF(Solver):
     --------
     base.Solver
     """
-    def __init__(self, name="ASTRODF", fixed_factors=None):
+    def __init__(self, name="VMIASTRODF", fixed_factors=None):
         if fixed_factors is None:
             fixed_factors = {}
         self.name = name

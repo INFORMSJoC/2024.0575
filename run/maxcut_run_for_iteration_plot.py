@@ -28,10 +28,10 @@ def main():
         solver_name = solver
 
         if solver == "VMI3IT-cv10":
-            solver_name = "ASTRODF"
+            solver_name = "VMIASTRODF"
             solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 3, "cv": 10}
         elif solver == "ASTRODFIT":
-            solver_name = "ASTRODF"
+            solver_name = "VMIASTRODF"
             solver_fixed_factors = {"overhead_burden": 0, "sampling_version": 0}
 
         # Temporarily store experiments on the same problem for post-normalization.
