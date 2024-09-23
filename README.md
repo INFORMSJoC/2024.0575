@@ -33,10 +33,12 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ## Description
 
-This repository aims to demonstrate the effect of variance model informed two stage stochastic trust region methods (ASTRO-DF-VMs) in quantum approximate optimization algorithm (QAOA). ASTRO-DF-VMs are derived from ASTRO-DF ([Ha and Shashaani 2023](https://ieeexplore.ieee.org/abstract/document/10408143)) and intended to efficiently solve the classical optimization problem in QAOA, by explicitly taking into account the two following characteristics. 
+This repository aims to demonstrate the effect of variance model informed two stage stochastic trust region methods (ASTRO-DF-VMs) in quantum approximate optimization algorithm (QAOA). ASTRO-DF-VMs, derived from a derivative-free adaptive sampling trust-region optimization (ASTRO-DF) ([Ha and Shashaani 2023](https://ieeexplore.ieee.org/abstract/document/10408143)), intended to efficiently solve the classical optimization problem in QAOA, by explicitly taking into account the two following characteristics. 
 
 1) the variance of the stochastic objective values typically decreases in proportion to the optimality gap.
 2) querying samples from a quantum computer introduces an additional latency overhead
+
+The key idea behind the proposed algorithm involves constructing two separate local models in each iteration: a model of the objective function, and a model of the variance of the objective function. Exploiting the variance model allows us to both restrict the number of communications with the quantum computer, and also helps navigate the nonconvex objective landscapes typical in the QAOA optimization problems. 
 
 ## Building
 
