@@ -2346,7 +2346,7 @@ def setup_plot(plot_type: str, solver_name: str = "SOLVER SET", problem_name: st
     if normalize:
         plt.ylabel("Fraction of Initial Optimality Gap", size=14)
         if plot_type != "box" and plot_type != "violin":
-            plt.xlabel("Fraction of Budget", size=14)
+            plt.xlabel("Fraction of Simulation Costs", size=14)
             plt.xlim((0, 1))
             plt.ylim((-0.1, 1.1))
             plt.tick_params(axis="both", which="major", labelsize=12)
@@ -2354,7 +2354,7 @@ def setup_plot(plot_type: str, solver_name: str = "SOLVER SET", problem_name: st
         #plt.ylabel("Objective Function Value", size=14)
         plt.ylabel("log(Objective Function Value)", size=14)
         if plot_type != "box" and plot_type != "violin":
-            plt.xlabel("Budget", size=14)
+            plt.xlabel("Simulation Costs", size=14)
             plt.xlim((0, budget))
             plt.tick_params(axis="both", which="major", labelsize=12)
     # Specify title (plus alternative y-axis label and alternative axes).
