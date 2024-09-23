@@ -12,7 +12,8 @@ from simopt.base import Solver, Problem, Solution
 
 
 class ASTRODF2M(Solver):
-    """ ASTRO-DF with two-model approach for figure 5 and 6
+    """ ASTRO-DF with a two-model approach was used for Figures 5 and 6. The algorithm does not include the two-stage sampling process. 
+        The only difference between ASTRODF2M and ASTRODF1M lies in whether a new design set, based on the variance model, is used.
 
     Attributes
     ----------
