@@ -22,7 +22,7 @@ from simopt.base import Model, Problem, Solver
 
 # directory dictionaries
 solver_directory: dict[str, "Solver"] = {
-    "ASTRODF": VMIASTRODF,
+    "VMIASTRODF": VMIASTRODF,
     "ASTRODF1M": ASTRODF1M,
     "ASTRODF2M": ASTRODF2M,
     "NELDMDQ": NelderMeadQ,
