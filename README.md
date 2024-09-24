@@ -62,7 +62,7 @@ python figures/figure12a.py
 To replicate these .pickle files, execute the code in the [run](run) folder. For example, to generate the output .pickle files for Figure 12a, execute the script with circuit depth p = 1 and communication costs set to 0.
 
 ```
-python run/maxcut_run.py
+python run/maxcut_run_vmiastrodf.py
 ```
 
 ## Acknowledgement
