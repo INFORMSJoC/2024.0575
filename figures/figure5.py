@@ -63,9 +63,9 @@ def main():
         experiments_same_solver = []
         solver_name = solver
         if solver == "ASTRODF2M":
-            solver_name = "ASTRO-DF-1Model"
-        elif solver == "ASTRODF1M":
             solver_name = "ASTRO-DF-2Model"
+        elif solver == "ASTRODF1M":
+            solver_name = "ASTRO-DF-1Model"
         elif solver == "NELDMDQ":
             solver_name = "Nelder-Mead"
         
