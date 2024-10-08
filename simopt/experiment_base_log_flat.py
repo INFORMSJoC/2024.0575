@@ -165,6 +165,34 @@ class Curve(object):
                            )
         return handle
 
+    def plot_marker(self, markers, color_str: str = "C0", curve_type: str = "regular") -> list["plt.Line2D"]:
+        """Plot a curve.
+
+        Parameters
+        ----------
+        color_str : str, default="C0"
+            String indicating line color, e.g., "C0", "C1", etc.
+        curve_type : str, default="regular"
+            String indicating type of line: "regular" or "conf_bound".
+
+        Returns
+        -------
+        handle : list [``matplotlib.lines.Line2D``]
+            Curve handle, to use when creating legends.
+        """
+        if curve_type == "regular":
+            linewidth = 2
+        elif curve_type == "conf_bound":
+            linewidth = 1
+
+        handle, = plt.step(self.x_vals,
+                           self.y_vals,
+                           color=color_str,
+                           linestyle=markers,
+                           linewidth=linewidth,
+                           where="post"
+                           )
+        return handle
 
 def mean_of_curves(curves: list["Curve"]) -> "Curve":
     """Compute pointwise (w.r.t. x-values) mean of curves.
@@ -1503,7 +1531,30 @@ def plot_progress_curves(experiments: list["ProblemSolver"], plot_type: str, bet
                     estimator = mean_of_curves(experiment.progress_curves)
                 else:
                     estimator = mean_of_curves(experiment.objective_curves)
-                handle = estimator.plot(color_str=color_str)
+
+                if experiment.solver.name == 'ASTRO-DF-VM1':
+                    markers = "dashed"
+                elif experiment.solver.name == 'ASTRO-DF-VM2':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF-VM3':
+                    markers = "solid"
+                elif experiment.solver.name == 'ASTRO-DF with regularized function (c_p = 1)':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF with regularized function (c_p = 10)':
+                    markers = "dashed"
+                elif experiment.solver.name == 'SPSA':
+                    markers = "dashed"
+                elif experiment.solver.name == 'Nelder-Mead':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF':
+                    markers = "dashdot"
+                elif experiment.solver.name == 'ASTRO-DF-2Model':
+                    markers = "solid"
+                elif experiment.solver.name == 'ASTRO-DF-1Model':
+                    markers = "dashdot"
+
+                handle = estimator.plot_marker(color_str=color_str, markers=markers)
+
             elif plot_type == "quantile":
                 # Plot estimated beta-quantile progress curve.
                 if normalize:
@@ -1532,12 +1583,12 @@ def plot_progress_curves(experiments: list["ProblemSolver"], plot_type: str, bet
         entire_labels = [experiment.solver.name for experiment in experiments]
         # Two model        
         estimator = mean_of_curves_flat_3()
-        handle = estimator.plot(color_str = "C3")
+        handle = estimator.plot_marker(color_str = "C3", markers=(0,(1,10)))
         entire_labels.append("The lowest local mininum value at (-3.78,-3.28)")
         solver_curve_handles.append(handle)
         
         estimator = mean_of_curves_flat_global()
-        handle = estimator.plot(color_str = "C4")
+        handle = estimator.plot_marker(color_str = "C4", markers=(0,(3,5,1,5,1,5)))
         entire_labels.append("The global mininum value at (3,2)")
         solver_curve_handles.append(handle)
 
@@ -2346,7 +2397,7 @@ def setup_plot(plot_type: str, solver_name: str = "SOLVER SET", problem_name: st
     if normalize:
         plt.ylabel("Fraction of Initial Optimality Gap", size=14)
         if plot_type != "box" and plot_type != "violin":
-            plt.xlabel("Fraction of Simulation Costs", size=14)
+            plt.xlabel("Fraction of Simulation Cost", size=14)
             plt.xlim((0, 1))
             plt.ylim((-0.1, 1.1))
             plt.tick_params(axis="both", which="major", labelsize=12)
@@ -2354,7 +2405,7 @@ def setup_plot(plot_type: str, solver_name: str = "SOLVER SET", problem_name: st
         #plt.ylabel("Objective Function Value", size=14)
         plt.ylabel("log(Objective Function Value)", size=14)
         if plot_type != "box" and plot_type != "violin":
-            plt.xlabel("Simulation Costs", size=14)
+            plt.xlabel("Simulation Cost", size=14)
             plt.xlim((0, budget))
             plt.tick_params(axis="both", which="major", labelsize=12)
     # Specify title (plus alternative y-axis label and alternative axes).
@@ -2412,7 +2463,7 @@ def setup_plot(plot_type: str, solver_name: str = "SOLVER SET", problem_name: st
         # plt.xlim((0, 1))
         # plt.ylim((0, 0.5))
         title = f"{solver_name}\nTerminal Progress"
-    plt.title(title, size=14)
+    #plt.title(title, size=14)
 
 
 def save_plot(solver_name: str, problem_name: str, plot_type: str, normalize: bool, extra: Union[float, list[float], None] = None) -> str:

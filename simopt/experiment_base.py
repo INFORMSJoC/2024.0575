@@ -164,6 +164,37 @@ class Curve(object):
                            where="post"
                            )
         return handle
+    
+    def plot_marker(self, markers, color_str: str = "C0", curve_type: str = "regular") -> list["plt.Line2D"]:
+        """Plot a curve.
+
+        Parameters
+        ----------
+        color_str : str, default="C0"
+            String indicating line color, e.g., "C0", "C1", etc.
+        curve_type : str, default="regular"
+            String indicating type of line: "regular" or "conf_bound".
+
+        Returns
+        -------
+        handle : list [``matplotlib.lines.Line2D``]
+            Curve handle, to use when creating legends.
+        """
+        if curve_type == "regular":
+            linestyle = "-"
+            linewidth = 2
+        elif curve_type == "conf_bound":
+            linestyle = "--"
+            linewidth = 1
+
+        handle, = plt.step(self.x_vals,
+                           self.y_vals,
+                           color=color_str,
+                           linestyle=markers,
+                           linewidth=linewidth,
+                           where="post"
+                           )
+        return handle
 
 
 def mean_of_curves(curves: list["Curve"]) -> "Curve":
@@ -2088,6 +2119,8 @@ def plot_progress_curves(experiments: list["ProblemSolver"], plot_type: str, bet
     file_list = []
     # Set up plot.
     n_experiments = len(experiments)
+    #solver_names = [solver_experiments[0].solver.name for solver_experiments in experiments]
+    #print(solver_names)
     if all_in_one:
         ref_experiment = experiments[0]
         setup_plot(plot_type=plot_type,
@@ -2119,7 +2152,25 @@ def plot_progress_curves(experiments: list["ProblemSolver"], plot_type: str, bet
                     estimator = mean_of_curves(experiment.progress_curves)
                 else:
                     estimator = mean_of_curves(experiment.objective_curves)
-                handle = estimator.plot(color_str=color_str)
+
+                if experiment.solver.name == 'ASTRO-DF-VM1':
+                    markers = "dashed"
+                elif experiment.solver.name == 'ASTRO-DF-VM2':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF-VM3':
+                    markers = "solid"
+                elif experiment.solver.name == 'ASTRO-DF with regularized function (c_p = 1)':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF with regularized function (c_p = 10)':
+                    markers = "dashed"
+                elif experiment.solver.name == 'SPSA':
+                    markers = "dashed"
+                elif experiment.solver.name == 'Nelder-Mead':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF':
+                    markers = "dashdot"
+
+                handle = estimator.plot_marker(color_str=color_str, markers=markers)
             elif plot_type == "quantile":
                 # Plot estimated beta-quantile progress curve.
                 if normalize:
@@ -2280,7 +2331,25 @@ def plot_progress_curves_it(experiments: list["ProblemSolver"], plot_type: str, 
                     estimator = mean_of_curves(experiment.progress_curves)
                 else:
                     estimator = mean_of_curves(experiment.objective_curves)
-                handle = estimator.plot(color_str=color_str)
+
+                if experiment.solver.name == 'ASTRO-DF-VM1':
+                    markers = "dashed"
+                elif experiment.solver.name == 'ASTRO-DF-VM2':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF-VM3':
+                    markers = "solid"
+                elif experiment.solver.name == 'ASTRO-DF with regularized function (c_p = 1)':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF with regularized function (c_p = 10)':
+                    markers = "dashed"
+                elif experiment.solver.name == 'SPSA':
+                    markers = "dashed"
+                elif experiment.solver.name == 'Nelder-Mead':
+                    markers = "dotted"
+                elif experiment.solver.name == 'ASTRO-DF':
+                    markers = "dashdot"
+
+                handle = estimator.plot_marker(color_str=color_str, markers=markers)
             elif plot_type == "quantile":
                 # Plot estimated beta-quantile progress curve.
                 if normalize:
@@ -2689,6 +2758,7 @@ def plot_solvability_profiles(experiments: list[list["ProblemSolver"]], plot_typ
         solver_names = [solver_experiments[0].solver.name for solver_experiments in experiments]
         solver_curves = []
         solver_curve_handles = []
+
         for solver_idx in range(n_solvers):
             solver_sub_curves = []
             color_str = "C" + str(solver_idx)
@@ -2705,8 +2775,30 @@ def plot_solvability_profiles(experiments: list[list["ProblemSolver"]], plot_typ
             solver_curve = mean_of_curves(solver_sub_curves)
             # CAUTION: Using mean above requires an equal number of macro-replications per problem.
             solver_curves.append(solver_curve)
+
             if plot_type in {"cdf_solvability", "quantile_solvability"}:
-                handle = solver_curve.plot(color_str=color_str)
+                if solver_names[solver_idx] == 'ASTRO-DF-VM1':
+                    markers = "dashed"
+                elif solver_names[solver_idx] == 'ASTRO-DF-VM2':
+                    markers = "dotted"
+                elif solver_names[solver_idx] == 'ASTRO-DF-VM3':
+                    markers = "solid"
+                elif solver_names[solver_idx] == 'ASTRO-DF with regularized function (c_p = 1)':
+                    markers = "dotted"
+                elif solver_names[solver_idx] == 'ASTRO-DF with regularized function (c_p = 10)':
+                    markers = "dashed"
+                elif solver_names[solver_idx] == 'SPSA':
+                    markers = "dashed"
+                elif solver_names[solver_idx] == 'Nelder-Mead':
+                    markers = "dotted"
+                elif solver_names[solver_idx] == 'ASTRO-DF':
+                    markers = "dashdot"
+                elif solver_names[solver_idx] == 'ASTRO-DF-VM3 with c_v = 10':
+                    markers = "solid"
+                elif solver_names[solver_idx] == 'ASTRO-DF-VM3 with c_v = 100':
+                    markers = "dotted"
+
+                handle = solver_curve.plot_marker(color_str=color_str, markers = markers)
                 solver_curve_handles.append(handle)
                 if plot_CIs or print_max_hw:
                     # Note: "experiments" needs to be a list of list of ProblemSolver objects.
@@ -3109,14 +3201,14 @@ def setup_plot(plot_type: str, solver_name: str = "SOLVER SET", problem_name: st
     if normalize:
         plt.ylabel("Fraction of Initial Optimality Gap", size=14)
         if plot_type != "box" and plot_type != "violin":
-            plt.xlabel("Fraction of Budget", size=14)
+            plt.xlabel("Fraction of Simulation Cost", size=14)
             plt.xlim((0, 1))
             plt.ylim((-0.1, 1.1))
             plt.tick_params(axis="both", which="major", labelsize=12)
     else:
         plt.ylabel("Objective Function Value", size=14)
         if plot_type != "box" and plot_type != "violin":
-            plt.xlabel("Budget", size=14)
+            plt.xlabel("Simulation Cost", size=14)
             plt.xlim((0, budget))
             plt.tick_params(axis="both", which="major", labelsize=12)
     # Specify title (plus alternative y-axis label and alternative axes).
@@ -3174,7 +3266,7 @@ def setup_plot(plot_type: str, solver_name: str = "SOLVER SET", problem_name: st
         # plt.xlim((0, 1))
         # plt.ylim((0, 0.5))
         title = f"{solver_name}\nTerminal Progress"
-    plt.title(title, size=14)
+    #plt.title(title, size=14)
 
 
 def save_plot(solver_name: str, problem_name: str, plot_type: str, normalize: bool, extra: Union[float, list[float], None] = None) -> str:
